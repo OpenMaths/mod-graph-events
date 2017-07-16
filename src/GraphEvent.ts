@@ -49,20 +49,17 @@ export class GraphEvent {
     parentId: string | null,
     nodeId: string,
     actionType: Action,
-    insertIndex?: number | undefined,
-    rawUoIConstructor?: string | undefined,
+    insertIndex?: number,
+    rawUoIConstructor?: string,
   ) {
     this.graphId = graphId
     this.parentId = parentId || ''
     this.nodeId = nodeId
     this.actionType = actionType
     this.timestamp = new Date()
-    this.insertIndex =
-      typeof insertIndex === 'undefined' ? null : insertIndex as number
+    this.insertIndex = insertIndex == null ? null : insertIndex as number
     this.rawUoIConstructor =
-      typeof rawUoIConstructor === 'undefined'
-        ? null
-        : rawUoIConstructor as string
+      rawUoIConstructor == null ? null : rawUoIConstructor as string
   }
 }
 
