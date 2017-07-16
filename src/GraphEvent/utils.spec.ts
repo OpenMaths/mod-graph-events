@@ -1,4 +1,4 @@
-import * as Event from './GraphEvent'
+import * as Event from './utils'
 
 describe('Models/Grid/GraphEvent', () => {
   describe('generateNodeId', () => {

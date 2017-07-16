@@ -1,2 +1,2 @@
-import * as GraphEvent from './GraphEvent/GraphEvent'
+import * as GraphEvent from './GraphEvent/utils'
 export default GraphEvent
