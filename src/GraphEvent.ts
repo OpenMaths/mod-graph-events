@@ -1,15 +1,15 @@
 import * as ShortId from 'shortid'
 
 export enum Action {
-  CreateGraph = 1,
-  CreateContainer,
-  CreateRow,
-  CreateColumn,
-  CreateContentHolder,
-  RemoveContainer,
-  RemoveRow,
-  RemoveColumn,
-  RemoveContentHolder,
+  CreateGraph = 'CreateGraph',
+  CreateContainer = 'CreateContainer',
+  CreateRow = 'CreateRow',
+  CreateColumn = 'CreateColumn',
+  CreateContentHolder = 'CreateContentHolder',
+  RemoveContainer = 'RemoveContainer',
+  RemoveRow = 'RemoveRow',
+  RemoveColumn = 'RemoveColumn',
+  RemoveContentHolder = 'RemoveContentHolder',
 }
 
 export const GraphNodeIdPrefix = 'g_'
