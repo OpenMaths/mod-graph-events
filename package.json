@@ -1,0 +1,26 @@
+{
+  "name": "@openmaths/mod-graph-events",
+  "version": "1.0.0",
+  "description": "The Graph Events Module",
+  "main": "./dist/main.js",
+  "typings": "./dist/main.d.ts",
+  "dependencies": {
+    "@threestup/monads": "^0.1.0",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^20.0.2",
+    "@types/node": "^8.0.9",
+    "@types/shortid": "0.0.29",
+    "jest": "^20.0.4",
+    "prettier": "^1.5.2",
+    "prettier-standard": "^6.0.0",
+    "ts-jest": "^20.0.7",
+    "typescript": "^2.4.1"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "Slavomir Vojacek <slavomirvojacek@gmail.com>",
+  "license": "ISC"
+}
