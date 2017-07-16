@@ -1,6 +1,7 @@
+import { Option, Some, None } from '@threestup/monads'
 import * as ShortId from 'shortid'
 
-export enum Action {
+export enum ActionType {
   CreateGraph = 'CreateGraph',
   CreateContainer = 'CreateContainer',
   CreateRow = 'CreateRow',
@@ -12,23 +13,23 @@ export enum Action {
   RemoveContentHolder = 'RemoveContentHolder',
 }
 
-export const GraphNodeIdPrefix = 'g_'
-export const ContainerNodeIdPrefix = 'c_'
-export const RowNodeIdPrefix = 'r_'
+export const GraphNodeIdPrefix = 'gph_'
+export const ContainerNodeIdPrefix = 'cont_'
+export const RowNodeIdPrefix = 'row_'
 export const ColumnNodeIdPrefix = 'col_'
-export const ContentHolderNodeIdPrefix = 'ch_'
+export const ContentHolderNodeIdPrefix = 'cttHdr_'
 
-export const generateNodeId = (action: Action): string => {
+export const generateNodeId = (action: ActionType): string => {
   switch (action) {
-    case Action.CreateGraph:
+    case ActionType.CreateGraph:
       return GraphNodeIdPrefix + ShortId.generate()
-    case Action.CreateContainer:
+    case ActionType.CreateContainer:
       return ContainerNodeIdPrefix + ShortId.generate()
-    case Action.CreateRow:
+    case ActionType.CreateRow:
       return RowNodeIdPrefix + ShortId.generate()
-    case Action.CreateColumn:
+    case ActionType.CreateColumn:
       return ColumnNodeIdPrefix + ShortId.generate()
-    case Action.CreateContentHolder:
+    case ActionType.CreateContentHolder:
       return ContentHolderNodeIdPrefix + ShortId.generate()
     default:
       throw new Error('Action ' + action + ' not recognised')
@@ -39,92 +40,91 @@ export class GraphEvent {
   graphId: string
   parentId: string
   nodeId: string
-  actionType: Action
-  timestamp: Date
-  insertIndex: number | null
-  rawUoIConstructor: string | null
+  actionType: ActionType
+  readonly timestamp: Date
+  insertIndex: Option<number>
+  rawUoIConstructor: Option<string>
 
   constructor(
     graphId: string,
-    parentId: string | null,
+    parentId: string,
     nodeId: string,
-    actionType: Action,
-    insertIndex?: number,
-    rawUoIConstructor?: string,
+    actionType: ActionType,
+    insertIndex: Option<number> = None,
+    rawUoIConstructor: Option<string> = None,
   ) {
     this.graphId = graphId
-    this.parentId = parentId || ''
+    this.parentId = parentId
     this.nodeId = nodeId
     this.actionType = actionType
     this.timestamp = new Date()
-    this.insertIndex = insertIndex == null ? null : insertIndex as number
-    this.rawUoIConstructor =
-      rawUoIConstructor == null ? null : rawUoIConstructor as string
+    this.insertIndex = insertIndex
+    this.rawUoIConstructor = rawUoIConstructor
   }
 }
 
 export class CreateGraphEvent extends GraphEvent {
   constructor() {
-    const graphId = generateNodeId(Action.CreateGraph)
-    super(graphId, null, graphId, Action.CreateGraph)
+    const graphId = generateNodeId(ActionType.CreateGraph)
+    super(graphId, '', graphId, ActionType.CreateGraph)
   }
 }
 
 export class CreateContainerEvent extends GraphEvent {
   constructor(graphId: string, parentId: string) {
-    const nodeId = generateNodeId(Action.CreateContainer)
-    super(graphId, parentId, nodeId, Action.CreateContainer)
+    const nodeId = generateNodeId(ActionType.CreateContainer)
+    super(graphId, parentId, nodeId, ActionType.CreateContainer)
   }
 }
 
 export class CreateRowEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, insertIndex: number) {
-    const nodeId = generateNodeId(Action.CreateRow)
-    super(graphId, parentId, nodeId, Action.CreateRow, insertIndex)
+    const nodeId = generateNodeId(ActionType.CreateRow)
+    super(graphId, parentId, nodeId, ActionType.CreateRow, Some(insertIndex))
   }
 }
 
 export class CreateColumnEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, insertIndex: number) {
-    const nodeId = generateNodeId(Action.CreateColumn)
-    super(graphId, parentId, nodeId, Action.CreateColumn, insertIndex)
+    const nodeId = generateNodeId(ActionType.CreateColumn)
+    super(graphId, parentId, nodeId, ActionType.CreateColumn, Some(insertIndex))
   }
 }
 
 export class CreateContentHolderEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, rawUoIConstructor: string) {
-    const nodeId = generateNodeId(Action.CreateContentHolder)
+    const nodeId = generateNodeId(ActionType.CreateContentHolder)
     super(
       graphId,
       parentId,
       nodeId,
-      Action.CreateContentHolder,
-      undefined,
-      rawUoIConstructor,
+      ActionType.CreateContentHolder,
+      None,
+      Some(rawUoIConstructor),
     )
   }
 }
 
 export class RemoveContainerEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, nodeId: string) {
-    super(graphId, parentId, nodeId, Action.RemoveContainer)
+    super(graphId, parentId, nodeId, ActionType.RemoveContainer)
   }
 }
 
 export class RemoveRowEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, nodeId: string) {
-    super(graphId, parentId, nodeId, Action.RemoveRow)
+    super(graphId, parentId, nodeId, ActionType.RemoveRow)
   }
 }
 
 export class RemoveColumnEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, nodeId: string) {
-    super(graphId, parentId, nodeId, Action.RemoveColumn)
+    super(graphId, parentId, nodeId, ActionType.RemoveColumn)
   }
 }
 
 export class RemoveContentHolderEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, nodeId: string) {
-    super(graphId, parentId, nodeId, Action.RemoveContentHolder)
+    super(graphId, parentId, nodeId, ActionType.RemoveContentHolder)
   }
 }

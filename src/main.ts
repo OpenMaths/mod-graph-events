@@ -1,2 +1,2 @@
-const main = () => console.log('Hello, World!')
-main()
+import * as GraphEvent from './GraphEvent/GraphEvent'
+export default GraphEvent
