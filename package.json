@@ -5,6 +5,7 @@
   "main": "./dist/main.js",
   "typings": "./dist/main.d.ts",
   "dependencies": {
+    "@openmaths/utils": "0.0.4",
     "@threestup/monads": "^0.2.0",
     "shortid": "^2.2.8"
   },

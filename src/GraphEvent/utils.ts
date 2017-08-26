@@ -41,7 +41,7 @@ export class GraphEvent {
   parentId: string
   nodeId: string
   actionType: ActionType
-  readonly timestamp: Date
+  readonly createdAt: string
   insertIndex: Option<number>
   rawUoIConstructor: Option<string>
 
@@ -57,7 +57,7 @@ export class GraphEvent {
     this.parentId = parentId
     this.nodeId = nodeId
     this.actionType = actionType
-    this.timestamp = new Date()
+    this.createdAt = new Date().toISOString()
     this.insertIndex = insertIndex
     this.rawUoIConstructor = rawUoIConstructor
   }

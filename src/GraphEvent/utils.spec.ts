@@ -1,3 +1,5 @@
+import { isValidISODate } from '@openmaths/utils'
+
 import * as Event from './utils'
 
 describe('Models/Grid/GraphEvent', () => {
@@ -51,7 +53,7 @@ describe('Models/Grid/GraphEvent', () => {
         Event.GraphNodeIdPrefix,
       )
       expect(event.actionType).toEqual(Event.ActionType.CreateGraph)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -70,7 +72,7 @@ describe('Models/Grid/GraphEvent', () => {
         event.nodeId.substring(0, Event.ContainerNodeIdPrefix.length),
       ).toEqual(Event.ContainerNodeIdPrefix)
       expect(event.actionType).toEqual(Event.ActionType.CreateContainer)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -89,7 +91,7 @@ describe('Models/Grid/GraphEvent', () => {
         Event.RowNodeIdPrefix,
       )
       expect(event.actionType).toEqual(Event.ActionType.CreateRow)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.unwrap_or(NaN)).toEqual(1)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -108,7 +110,7 @@ describe('Models/Grid/GraphEvent', () => {
         event.nodeId.substring(0, Event.ColumnNodeIdPrefix.length),
       ).toEqual(Event.ColumnNodeIdPrefix)
       expect(event.actionType).toEqual(Event.ActionType.CreateColumn)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.unwrap_or(NaN)).toEqual(0)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -131,7 +133,7 @@ describe('Models/Grid/GraphEvent', () => {
         event.nodeId.substring(0, Event.ContentHolderNodeIdPrefix.length),
       ).toEqual(Event.ContentHolderNodeIdPrefix)
       expect(event.actionType).toEqual(Event.ActionType.CreateContentHolder)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.unwrap_or('')).toEqual(
         'UoIConstructDefinition',
@@ -154,7 +156,7 @@ describe('Models/Grid/GraphEvent', () => {
       expect(event.parentId).toEqual('parentId')
       expect(event.nodeId).toEqual('nodeId')
       expect(event.actionType).toEqual(Event.ActionType.RemoveContainer)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -171,7 +173,7 @@ describe('Models/Grid/GraphEvent', () => {
       expect(event.parentId).toEqual('parentId')
       expect(event.nodeId).toEqual('nodeId')
       expect(event.actionType).toEqual(Event.ActionType.RemoveRow)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -188,7 +190,7 @@ describe('Models/Grid/GraphEvent', () => {
       expect(event.parentId).toEqual('parentId')
       expect(event.nodeId).toEqual('nodeId')
       expect(event.actionType).toEqual(Event.ActionType.RemoveColumn)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
@@ -209,7 +211,7 @@ describe('Models/Grid/GraphEvent', () => {
       expect(event.parentId).toEqual('parentId')
       expect(event.nodeId).toEqual('nodeId')
       expect(event.actionType).toEqual(Event.ActionType.RemoveContentHolder)
-      expect(event.timestamp instanceof Date).toEqual(true)
+      expect(isValidISODate(event.createdAt)).toEqual(true)
       expect(event.insertIndex.is_none()).toEqual(true)
       expect(event.rawUoIConstructor.is_none()).toEqual(true)
     })
