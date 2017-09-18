@@ -1,1 +1,1 @@
-export * from './GraphEvent/utils'
+export * from './GraphEvent/events'
