@@ -5,9 +5,9 @@
     "diagnostics": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
-      "es2015"
+      "ES6"
     ],
-    "module": "commonjs",
+    "module": "ES6",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -19,7 +19,7 @@
     "removeComments": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es5"
+    "target": "ES6"
   },
   "include": [
     "./src/**/*"
