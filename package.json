@@ -1,6 +1,6 @@
 {
   "name": "@openmaths/graph-events",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "The Graph Events Module",
   "main": "./dist/main.js",
   "typings": "./dist/main.d.ts",
