@@ -1,9 +1,9 @@
-import * as ShortId from 'shortid'
+import * as ShortId from "shortid"
 
-import * as Event from './events'
-import NodeId, { Prefix } from './nodeId'
+import * as Event from "./events"
+import NodeId, { Prefix } from "./nodeId"
 
-describe('Events', () => {
+describe("Events", () => {
   beforeEach(() => {
     this.graphId = Prefix.GraphNodeIdPrefix + ShortId.generate()
     this.containerId = Prefix.ContainerNodeIdPrefix + ShortId.generate()
@@ -20,10 +20,10 @@ describe('Events', () => {
     this.contentHolderId = null
   })
 
-  describe('CreateGraphEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("CreateGraphEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       jest
-        .spyOn(NodeId, 'gen' as any)
+        .spyOn(NodeId, "gen" as any)
         .mockImplementationOnce(() => this.graphId)
 
       const event = new Event.CreateGraphEvent()
@@ -38,10 +38,10 @@ describe('Events', () => {
     })
   })
 
-  describe('CreateContainerEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("CreateContainerEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       jest
-        .spyOn(NodeId, 'gen' as any)
+        .spyOn(NodeId, "gen" as any)
         .mockImplementationOnce(() => this.containerId)
 
       const event = new Event.CreateContainerEvent(this.graphId, this.graphId)
@@ -56,9 +56,9 @@ describe('Events', () => {
     })
   })
 
-  describe('CreateRowEvent', () => {
-    it('returns appropriate GraphEvent', () => {
-      jest.spyOn(NodeId, 'gen' as any).mockImplementationOnce(() => this.rowId)
+  describe("CreateRowEvent", () => {
+    it("returns appropriate GraphEvent", () => {
+      jest.spyOn(NodeId, "gen" as any).mockImplementationOnce(() => this.rowId)
 
       const event = new Event.CreateRowEvent(this.graphId, this.containerId, 1)
 
@@ -72,10 +72,10 @@ describe('Events', () => {
     })
   })
 
-  describe('CreateColumnEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("CreateColumnEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       jest
-        .spyOn(NodeId, 'gen' as any)
+        .spyOn(NodeId, "gen" as any)
         .mockImplementationOnce(() => this.columnId)
 
       const event = new Event.CreateColumnEvent(this.graphId, this.rowId, 0)
@@ -90,16 +90,16 @@ describe('Events', () => {
     })
   })
 
-  describe('CreateContentHolderEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("CreateContentHolderEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       jest
-        .spyOn(NodeId, 'gen' as any)
+        .spyOn(NodeId, "gen" as any)
         .mockImplementationOnce(() => this.contentHolderId)
 
       const event = new Event.CreateContentHolderEvent(
         this.graphId,
         this.columnId,
-        'UoIConstructDefinition',
+        "UoIConstructDefinition",
       )
 
       expect(event instanceof Event.GraphEvent).toEqual(true)
@@ -109,12 +109,12 @@ describe('Events', () => {
       expect(event.actionType).toEqual(Event.ActionType.CreateContentHolder)
       expect(event.createdAt instanceof Date).toEqual(true)
       expect(event.insertIndex).toEqual(0)
-      expect(event.rawUoIConstructor).toEqual('UoIConstructDefinition')
+      expect(event.rawUoIConstructor).toEqual("UoIConstructDefinition")
     })
   })
 
-  describe('RemoveContainerEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("RemoveContainerEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       const event = new Event.RemoveContainerEvent(
         this.graphId,
         this.graphId,
@@ -131,8 +131,8 @@ describe('Events', () => {
     })
   })
 
-  describe('RemoveRowEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("RemoveRowEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       const event = new Event.RemoveRowEvent(
         this.graphId,
         this.containerId,
@@ -149,8 +149,8 @@ describe('Events', () => {
     })
   })
 
-  describe('RemoveColumnEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("RemoveColumnEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       const event = new Event.RemoveColumnEvent(
         this.graphId,
         this.rowId,
@@ -167,8 +167,8 @@ describe('Events', () => {
     })
   })
 
-  describe('RemoveContentHolderEvent', () => {
-    it('returns appropriate GraphEvent', () => {
+  describe("RemoveContentHolderEvent", () => {
+    it("returns appropriate GraphEvent", () => {
       const event = new Event.RemoveContentHolderEvent(
         this.graphId,
         this.columnId,

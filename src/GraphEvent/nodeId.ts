@@ -1,6 +1,6 @@
-import * as ShortId from 'shortid'
+import * as ShortId from "shortid"
 
-import { ActionType } from './events'
+import { ActionType } from "./events"
 
 interface NodeIdPrefix {
   GraphNodeIdPrefix: string
@@ -11,11 +11,11 @@ interface NodeIdPrefix {
 }
 
 const Prefix: NodeIdPrefix = {
-  GraphNodeIdPrefix: 'gph_',
-  ContainerNodeIdPrefix: 'con_',
-  RowNodeIdPrefix: 'row_',
-  ColumnNodeIdPrefix: 'col_',
-  ContentHolderNodeIdPrefix: 'cth_',
+  GraphNodeIdPrefix: "gph_",
+  ContainerNodeIdPrefix: "con_",
+  RowNodeIdPrefix: "row_",
+  ColumnNodeIdPrefix: "col_",
+  ContentHolderNodeIdPrefix: "cth_",
 }
 
 class NodeId {
@@ -32,7 +32,7 @@ class NodeId {
       case ActionType.CreateContentHolder:
         return Prefix.ContentHolderNodeIdPrefix + ShortId.generate()
       default:
-        throw new Error('Action ' + action + ' not recognised')
+        throw new Error("Action " + action + " not recognised")
     }
   }
 

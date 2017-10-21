@@ -1,19 +1,19 @@
-import NodeId from './nodeId'
+import NodeId from "./nodeId"
 
 // @TODO import from utils
 const throwIfNegativeInteger = (...args: any[]) => true
 const throwIfInvalidNodeId = NodeId.throwIfNotValid
 
 enum ActionType {
-  CreateGraph = 'CreateGraph',
-  CreateContainer = 'CreateContainer',
-  CreateRow = 'CreateRow',
-  CreateColumn = 'CreateColumn',
-  CreateContentHolder = 'CreateContentHolder',
-  RemoveContainer = 'RemoveContainer',
-  RemoveRow = 'RemoveRow',
-  RemoveColumn = 'RemoveColumn',
-  RemoveContentHolder = 'RemoveContentHolder',
+  CreateGraph = "CreateGraph",
+  CreateContainer = "CreateContainer",
+  CreateRow = "CreateRow",
+  CreateColumn = "CreateColumn",
+  CreateContentHolder = "CreateContentHolder",
+  RemoveContainer = "RemoveContainer",
+  RemoveRow = "RemoveRow",
+  RemoveColumn = "RemoveColumn",
+  RemoveContentHolder = "RemoveContentHolder",
 }
 
 class GraphEvent {
