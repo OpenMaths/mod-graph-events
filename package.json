@@ -12,19 +12,19 @@
     "test": "make test"
   },
   "dependencies": {
-    "@openmaths/utils": "^0.1.3",
-    "@threestup/monads": "^0.2.4",
+    "@openmaths/utils": "^1.0.0",
+    "@threestup/monads": "^0.3.1",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
-    "@types/jest": "^21.1.0",
-    "@types/node": "^8.0.30",
+    "@types/jest": "^21.1.8",
+    "@types/node": "^8.0.53",
     "@types/shortid": "0.0.29",
-    "jest": "^21.1.0",
-    "prettier": "^1.7.0",
-    "prettier-standard": "^6.0.0",
-    "ts-jest": "^21.0.1",
-    "typescript": "^2.5.2"
+    "jest": "^21.2.1",
+    "prettier": "^1.8.2",
+    "prettier-standard": "^7.0.3",
+    "ts-jest": "^21.2.4",
+    "typescript": "^2.6.2"
   },
   "repository": {
     "type": "git",
