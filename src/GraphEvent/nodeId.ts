@@ -1,6 +1,6 @@
 import * as ShortId from "shortid"
 
-import { ActionType } from "./events"
+type NodeType = "Graph" | "Container" | "Row" | "Column" | "ContentHolder"
 
 interface NodeIdPrefix {
   GraphNodeIdPrefix: string
@@ -19,20 +19,20 @@ const Prefix: NodeIdPrefix = {
 }
 
 class NodeId {
-  static gen(action: ActionType): string {
-    switch (action) {
-      case ActionType.CreateGraph:
+  static gen(type: NodeType): string {
+    switch (type) {
+      case "Graph":
         return Prefix.GraphNodeIdPrefix + ShortId.generate()
-      case ActionType.CreateContainer:
+      case "Container":
         return Prefix.ContainerNodeIdPrefix + ShortId.generate()
-      case ActionType.CreateRow:
+      case "Row":
         return Prefix.RowNodeIdPrefix + ShortId.generate()
-      case ActionType.CreateColumn:
+      case "Column":
         return Prefix.ColumnNodeIdPrefix + ShortId.generate()
-      case ActionType.CreateContentHolder:
+      case "ContentHolder":
         return Prefix.ContentHolderNodeIdPrefix + ShortId.generate()
       default:
-        throw new Error("Action " + action + " not recognised")
+        throw new Error(`Action "${type}" not recognised`);
     }
   }
 
@@ -53,5 +53,5 @@ class NodeId {
   }
 }
 
-export { NodeIdPrefix, NodeId, Prefix }
+export { NodeType, NodeIdPrefix, NodeId, Prefix }
 export default NodeId

@@ -47,28 +47,28 @@ class GraphEvent {
 
 class CreateGraphEvent extends GraphEvent {
   constructor() {
-    const graphId = NodeId.gen(ActionType.CreateGraph)
+    const graphId = NodeId.gen("Graph")
     super(graphId, graphId, graphId, ActionType.CreateGraph)
   }
 }
 
 class CreateContainerEvent extends GraphEvent {
   constructor(graphId: string, parentId: string) {
-    const nodeId = NodeId.gen(ActionType.CreateContainer)
+    const nodeId = NodeId.gen("Container")
     super(graphId, parentId, nodeId, ActionType.CreateContainer)
   }
 }
 
 class CreateRowEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, insertIndex: number = 0) {
-    const nodeId = NodeId.gen(ActionType.CreateRow)
+    const nodeId = NodeId.gen("Row")
     super(graphId, parentId, nodeId, ActionType.CreateRow, insertIndex)
   }
 }
 
 class CreateColumnEvent extends GraphEvent {
   constructor(graphId: string, parentId: string, insertIndex: number = 0) {
-    const nodeId = NodeId.gen(ActionType.CreateColumn)
+    const nodeId = NodeId.gen("Column")
     super(graphId, parentId, nodeId, ActionType.CreateColumn, insertIndex)
   }
 }
@@ -77,7 +77,7 @@ class CreateContentHolderEvent extends GraphEvent {
   rawUoIConstructor: string
 
   constructor(graphId: string, parentId: string, rawUoIConstructor: string) {
-    const nodeId = NodeId.gen(ActionType.CreateContentHolder)
+    const nodeId = NodeId.gen("ContentHolder")
     super(graphId, parentId, nodeId, ActionType.CreateContentHolder)
     this.rawUoIConstructor = rawUoIConstructor
   }
