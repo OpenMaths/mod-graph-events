@@ -1,9 +1,3 @@
-/coverage
-/src
-
-jest.json
-makefile
-tsconfig.json
-
-**.spec.js
-**.spec.d.ts
+**
+!dist
+!README.md
