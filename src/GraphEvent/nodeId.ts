@@ -32,14 +32,12 @@ class NodeId {
       case "ContentHolder":
         return Prefix.ContentHolderNodeIdPrefix + ShortId.generate()
       default:
-        throw new Error(`Action "${type}" not recognised`);
+        throw new Error(`Action "${type}" not recognised`)
     }
   }
 
   static throwIfNotValid(val: string) {
-    const prefixes = Object.keys(Prefix).map(
-      (key: keyof NodeIdPrefix) => Prefix[key],
-    )
+    const prefixes = Object.keys(Prefix).map((key: keyof NodeIdPrefix) => Prefix[key])
 
     const prefix = val.substr(0, 4)
     const rest = val.substr(4)

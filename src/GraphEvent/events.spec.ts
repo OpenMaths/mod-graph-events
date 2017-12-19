@@ -22,9 +22,7 @@ describe("Events", () => {
 
   describe("CreateGraphEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      jest
-        .spyOn(NodeId, "gen" as any)
-        .mockImplementationOnce(() => this.graphId)
+      jest.spyOn(NodeId, "gen" as any).mockImplementationOnce(() => this.graphId)
 
       const event = new Event.CreateGraphEvent()
 
@@ -40,9 +38,7 @@ describe("Events", () => {
 
   describe("CreateContainerEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      jest
-        .spyOn(NodeId, "gen" as any)
-        .mockImplementationOnce(() => this.containerId)
+      jest.spyOn(NodeId, "gen" as any).mockImplementationOnce(() => this.containerId)
 
       const event = new Event.CreateContainerEvent(this.graphId, this.graphId)
 
@@ -74,9 +70,7 @@ describe("Events", () => {
 
   describe("CreateColumnEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      jest
-        .spyOn(NodeId, "gen" as any)
-        .mockImplementationOnce(() => this.columnId)
+      jest.spyOn(NodeId, "gen" as any).mockImplementationOnce(() => this.columnId)
 
       const event = new Event.CreateColumnEvent(this.graphId, this.rowId, 0)
 
@@ -92,9 +86,7 @@ describe("Events", () => {
 
   describe("CreateContentHolderEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      jest
-        .spyOn(NodeId, "gen" as any)
-        .mockImplementationOnce(() => this.contentHolderId)
+      jest.spyOn(NodeId, "gen" as any).mockImplementationOnce(() => this.contentHolderId)
 
       const event = new Event.CreateContentHolderEvent(
         this.graphId,
@@ -115,11 +107,7 @@ describe("Events", () => {
 
   describe("RemoveContainerEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      const event = new Event.RemoveContainerEvent(
-        this.graphId,
-        this.graphId,
-        this.containerId,
-      )
+      const event = new Event.RemoveContainerEvent(this.graphId, this.graphId, this.containerId)
 
       expect(event instanceof Event.GraphEvent).toEqual(true)
       expect(event.graphId).toEqual(this.graphId)
@@ -133,11 +121,7 @@ describe("Events", () => {
 
   describe("RemoveRowEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      const event = new Event.RemoveRowEvent(
-        this.graphId,
-        this.containerId,
-        this.rowId,
-      )
+      const event = new Event.RemoveRowEvent(this.graphId, this.containerId, this.rowId)
 
       expect(event instanceof Event.GraphEvent).toEqual(true)
       expect(event.graphId).toEqual(this.graphId)
@@ -151,11 +135,7 @@ describe("Events", () => {
 
   describe("RemoveColumnEvent", () => {
     it("returns appropriate GraphEvent", () => {
-      const event = new Event.RemoveColumnEvent(
-        this.graphId,
-        this.rowId,
-        this.columnId,
-      )
+      const event = new Event.RemoveColumnEvent(this.graphId, this.rowId, this.columnId)
 
       expect(event instanceof Event.GraphEvent).toEqual(true)
       expect(event.graphId).toEqual(this.graphId)

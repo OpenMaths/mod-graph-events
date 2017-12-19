@@ -4,9 +4,7 @@ describe("NodeId", () => {
   describe("gen", () => {
     it("generates appropriate nodeId for Graph", () => {
       const nodeId = NodeId.gen("Graph")
-      expect(nodeId.substring(0, Prefix.GraphNodeIdPrefix.length)).toEqual(
-        Prefix.GraphNodeIdPrefix,
-      )
+      expect(nodeId.substring(0, Prefix.GraphNodeIdPrefix.length)).toEqual(Prefix.GraphNodeIdPrefix)
     })
 
     it("generates appropriate nodeId for Container", () => {
@@ -18,9 +16,7 @@ describe("NodeId", () => {
 
     it("generates appropriate nodeId for Row", () => {
       const nodeId = NodeId.gen("Row")
-      expect(nodeId.substring(0, Prefix.RowNodeIdPrefix.length)).toEqual(
-        Prefix.RowNodeIdPrefix,
-      )
+      expect(nodeId.substring(0, Prefix.RowNodeIdPrefix.length)).toEqual(Prefix.RowNodeIdPrefix)
     })
 
     it("generates appropriate nodeId for Column", () => {
@@ -32,9 +28,9 @@ describe("NodeId", () => {
 
     it("generates appropriate nodeId for ContentHolder", () => {
       const nodeId = NodeId.gen("ContentHolder")
-      expect(
-        nodeId.substring(0, Prefix.ContentHolderNodeIdPrefix.length),
-      ).toEqual(Prefix.ContentHolderNodeIdPrefix)
+      expect(nodeId.substring(0, Prefix.ContentHolderNodeIdPrefix.length)).toEqual(
+        Prefix.ContentHolderNodeIdPrefix,
+      )
     })
   })
 })
