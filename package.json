@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@openmaths/utils": "^1.0.0",
-    "@threestup/monads": "^0.3.1",
+    "@threestup/monads": "^0.4.0",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
