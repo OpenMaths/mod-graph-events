@@ -1,15 +1,15 @@
-import * as ShortId from "shortid"
+import { generateId } from "@openmaths/utils"
 
 import * as Event from "./events"
 import NodeId, { Prefix } from "./nodeId"
 
 describe("Events", () => {
   beforeEach(() => {
-    this.graphId = Prefix.GraphNodeIdPrefix + ShortId.generate()
-    this.containerId = Prefix.ContainerNodeIdPrefix + ShortId.generate()
-    this.rowId = Prefix.RowNodeIdPrefix + ShortId.generate()
-    this.columnId = Prefix.ColumnNodeIdPrefix + ShortId.generate()
-    this.contentHolderId = Prefix.ContentHolderNodeIdPrefix + ShortId.generate()
+    this.graphId = Prefix.GraphNodeIdPrefix + generateId()
+    this.containerId = Prefix.ContainerNodeIdPrefix + generateId()
+    this.rowId = Prefix.RowNodeIdPrefix + generateId()
+    this.columnId = Prefix.ColumnNodeIdPrefix + generateId()
+    this.contentHolderId = Prefix.ContentHolderNodeIdPrefix + generateId()
   })
 
   afterEach(() => {

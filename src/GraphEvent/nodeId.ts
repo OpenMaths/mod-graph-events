@@ -1,4 +1,4 @@
-import * as ShortId from "shortid"
+import { generateId, isValidId } from "@openmaths/utils"
 
 type NodeType = "Graph" | "Container" | "Row" | "Column" | "ContentHolder"
 
@@ -22,15 +22,15 @@ class NodeId {
   static gen(type: NodeType): string {
     switch (type) {
       case "Graph":
-        return Prefix.GraphNodeIdPrefix + ShortId.generate()
+        return Prefix.GraphNodeIdPrefix + generateId()
       case "Container":
-        return Prefix.ContainerNodeIdPrefix + ShortId.generate()
+        return Prefix.ContainerNodeIdPrefix + generateId()
       case "Row":
-        return Prefix.RowNodeIdPrefix + ShortId.generate()
+        return Prefix.RowNodeIdPrefix + generateId()
       case "Column":
-        return Prefix.ColumnNodeIdPrefix + ShortId.generate()
+        return Prefix.ColumnNodeIdPrefix + generateId()
       case "ContentHolder":
-        return Prefix.ContentHolderNodeIdPrefix + ShortId.generate()
+        return Prefix.ContentHolderNodeIdPrefix + generateId()
       default:
         throw new Error(`Action "${type}" not recognised`)
     }
@@ -43,7 +43,7 @@ class NodeId {
     const rest = val.substr(4)
 
     const hasPrefix = prefixes.indexOf(prefix) !== -1
-    const isValidShortId = ShortId.isValid(rest)
+    const isValidShortId = isValidId(rest)
 
     if (!hasPrefix || !isValidShortId) {
       throw new Error(`"${val}" is an invalid nodeId`)
