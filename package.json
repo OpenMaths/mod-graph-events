@@ -22,7 +22,7 @@
     "@types/shortid": "0.0.29",
     "jest": "^23.2.0",
     "prettier": "^1.13.7",
-    "prettier-standard": "^8.0.1",
+    "prettier-standard": "16.4.1",
     "ts-jest": "^22.4.6",
     "typescript": "^2.9.2"
   },
